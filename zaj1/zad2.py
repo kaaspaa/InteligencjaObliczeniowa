@@ -8,6 +8,7 @@ print("working directory: ",cwd,"\n")
 #b)
 print("b)Pobierz ze strony i otwórz plik osoby.csv ze wskazaniem, że kolumny mają nagłówki, a separatorem jest przecinek. Następnie wyświetl tabelę danych.")
 
+
 #c)
 print("c)Wyświetl same imiona.")
 
