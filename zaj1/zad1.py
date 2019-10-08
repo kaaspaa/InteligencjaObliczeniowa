@@ -4,6 +4,10 @@ print("odp = ", 45*678,"\n")
 
 #b)
 print("b) Wczytaj pod zmienne dwa wektory: x=(7; 4; 2; 0; 9) oraz y=(2; 1; 5; 3; 3).")
+x = [7,4,2,0,9]
+y = [2,1,5,3,3]
+print("x = ",x)
+print("y = ",y, "\n")
 
 #c)
 print("c)Oblicz za pomocą jednej operacji wektor, którego współrzędne są sumami współrzędnych wektorów x i y. Wyświetl ten wektor.")
