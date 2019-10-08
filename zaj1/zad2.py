@@ -68,7 +68,7 @@ with open('osoby.csv') as csv_file:
     print("odp = ",avg/n_of_rows)
 print()
 
-
+#g)
 print("g)Dodaj kolumnę o nazwie „wyplata” i uzupełnij ją losowymi liczbami z zakresu (2000,5000)")
 with open('osoby.csv') as csv_file:
     csv_reader = csv.reader(csv_file, delimiter=',')
@@ -87,13 +87,15 @@ with open('osoby.csv') as csv_file:
         print(row)
     print()
     
-    print("\nh)Dodaj nowy rekord do tabeli: Jan Kowalski, wiek 30, wypłata 3000.") #h)
+#h)
+    print("\nh)Dodaj nowy rekord do tabeli: Jan Kowalski, wiek 30, wypłata 3000.") 
     temp_list = ["Kowalski", "Jan", "m", "30", 3000]
     rows.append(temp_list)
     for row in rows:
         print(row)
-    print
-    print("i)Zapisz zmodyfikowaną tabelę do pliku osoby3.csv.") #i)
+    print()
+#i)
+    print("i)Zapisz zmodyfikowaną tabelę do pliku osoby3.csv.") 
     with open('osoby3.csv', 'w') as write_csv:
         for row in rows:
             line_number = 0
