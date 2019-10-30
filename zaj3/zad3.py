@@ -45,7 +45,7 @@ maze = [(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), (0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 
         (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)]
 ga = pyeasyga.GeneticAlgorithm(maze,
                                population_size=300,
-                               generations=150,
+                               generations=200,
                                crossover_probability=0.8,
                                mutation_probability=0.1,
                                elitism=True,
