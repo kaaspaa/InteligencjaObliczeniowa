@@ -23,7 +23,7 @@ all_classes = df['class'].values
 dtc = DecisionTreeClassifier()
 dtc.fit(train_inputs, train_classes)
 print(dtc.score(test_inputs, test_classes))
-#plt.show()
+plt.show()
 #drzewa
 iris = load_iris()
 clf = tree.DecisionTreeClassifier()
