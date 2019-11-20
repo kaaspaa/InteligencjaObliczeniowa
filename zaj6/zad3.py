@@ -27,6 +27,7 @@ for n_neighbors in neighbors_settings:
     cm = confusion_matrix(y_test, y_pred)
     print("matrix dla knn " + str(n_neighbors) + " = ")
     print(cm)
+    print(knn_score)
 
 # Naive Bayes
 X_train, X_test, y_train, y_test = train_test_split(diabetes.loc[:, diabetes.columns != 'class'], diabetes['class'],
@@ -40,6 +41,7 @@ y_pred = gnb.predict(X_test)
 cm = confusion_matrix(y_test, y_pred)
 print("Naive Bayes = ")
 print(cm)
+print(gnb_score)
 
 # Decision Tree Classifier
 X_train, X_test, y_train, y_test = train_test_split(diabetes.loc[:, diabetes.columns != 'class'], diabetes['class'],
@@ -52,6 +54,7 @@ y_pred = dtc.predict(X_test)
 cm = confusion_matrix(y_test, y_pred)
 print("Decision Tree = ")
 print(cm)
+print(dtc_score)
 
 # wykres
 plt.axis([0,12,0,1])
