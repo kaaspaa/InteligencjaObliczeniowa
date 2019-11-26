@@ -1,15 +1,15 @@
 # importing the libraries
 import numpy as np
 import matplotlib.pyplot as plt
-import pandas as pd
 from sklearn import datasets
 from sklearn.cluster import KMeans
+from sklearn import  metrics
 
 iris = datasets.load_iris()
 # 1
 X = iris.data[:, :2]
 y = iris.target
-km = KMeans(n_clusters=3, random_state=21)
+km = KMeans(n_clusters=3, n_jobs=4, random_state=21)
 km.fit(X)
 centers = km.cluster_centers_
 print(centers)
@@ -27,3 +27,18 @@ axes[1].tick_params(direction='in', length=10, width=5, colors='k', labelsize=20
 axes[0].set_title('Actual', fontsize=18)
 axes[1].set_title('Predicted', fontsize=18)
 plt.show()
+print("y:")
+print(y)
+print("new:")
+print(new_labels)
+
+# purity
+contingency_matrix = metrics.cluster.contingency_matrix(y,new_labels)
+p_score = np.sum(np.amax(contingency_matrix)) / np.sum(contingency_matrix)
+print("purity wynik:")
+print(p_score)
+
+# rand index
+ri_score = metrics.adjusted_rand_score(y, new_labels)
+print("rand index wynik")
+print(ri_score)
