@@ -1,7 +1,4 @@
 import pandas as pd
-import matplotlib.pyplot as plt
-import numpy as np
-import tensorflow as tf
 from keras.utils import np_utils
 from keras.models import Sequential
 from keras.layers import Dense
@@ -14,10 +11,9 @@ print(df.head())
 rows, cols = df.shape
 print(rows)
 print(cols)
-
+# b
 label_names = df['species'].unique()
 print(label_names)
-# b
 index_and_label = list(enumerate(label_names))
 print(index_and_label)
 
