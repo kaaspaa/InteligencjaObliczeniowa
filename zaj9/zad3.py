@@ -78,7 +78,7 @@ model = Sequential()
 
 model.add(Dense(10, input_shape=(8,), activation='relu', name='fc1'))
 model.add(Dense(10, activation='relu', name='fc2'))
-model.add(Dense(3, activation='softmax', name='output'))
+model.add(Dense(2, activation='softmax', name='output'))
 
 # Adam optimizer with learning rate of 0.001
 optimizer = Adam(lr=0.001)
@@ -88,6 +88,6 @@ print('Neural Network Model Summary: ')
 print(model.summary())
 
 # Train the model
-y_train = np_utils.to_categorical(y_train, num_classes=3)
-y_test = np_utils.to_categorical(y_test, num_classes=3)
+y_train = np_utils.to_categorical(y_train, num_classes=2)
+y_test = np_utils.to_categorical(y_test, num_classes=2)
 model.fit(x_train, y_train, verbose=2, batch_size=5, epochs=200)
