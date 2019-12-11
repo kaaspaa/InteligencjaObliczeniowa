@@ -24,19 +24,19 @@ df = df.replace(label_to_index)
 
 df = df.sample(frac=1)
 # c
-train_data = df.iloc[:120, :]
-test_data = df.iloc[120:, :]
+train_data = df.iloc[:360, :]
+test_data = df.iloc[360:, :]
 
-x_train = train_data.iloc[:120, 1:-1]
-y_train = train_data.iloc[:120, -1:]
+x_train = train_data.iloc[:360, :-1]
+y_train = train_data.iloc[:360, -1:]
 
-x_test = test_data.iloc[120:, 1:-1]
-y_test = test_data.iloc[120:, -1:]
+x_test = test_data.iloc[60:, :-1]
+y_test = test_data.iloc[60:, -1:]
 # a
-min_value = train_data[c1].min()
-max_value = train_data[c1].max()
-x_train['pregnant-times'] = (train_data['pregnant-times'] - min_value)/(max_value - min_value)
-x_test['pregnant-times'] = (train_data['pregnant-times'] - min_value)/(max_value - min_value)
+min_value = x_train['pregnant-times'].min()
+max_value = x_train['pregnant-times'].max()
+x_train['pregnant-times'] = (x_train['pregnant-times'] - min_value)/(max_value - min_value)
+x_test['pregnant-times'] = (x_test['pregnant-times'] - min_value)/(max_value - min_value)
 
 min_value = x_train['glucose-concentr'].min()
 max_value = x_train['glucose-concentr'].max()
@@ -94,5 +94,6 @@ model.fit(x_train, y_train, verbose=2, batch_size=5, epochs=200)
 
 test_loss, test_acc = model.evaluate(x_train, y_train)
 print(test_acc)
-test_loss2, test_acc2 = model.evaluate(x_test, y_test)
-print(test_acc2)
+test_loss, test_acc = model.evaluate(x_test, y_test)
+print(test_acc)
+
