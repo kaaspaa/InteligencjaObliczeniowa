@@ -24,14 +24,14 @@ df = df.replace(label_to_index)
 
 df = df.sample(frac=1)
 # c
-train_data = df.iloc[:120, :]
-test_data = df.iloc[120:, :]
+train_data = df.iloc[:100, :]
+test_data = df.iloc[50:, :]
 
-x_train = train_data.iloc[:120, 1:-1]
-y_train = train_data.iloc[:120, -1:]
+x_train = train_data.iloc[:100, 1:-1]
+y_train = train_data.iloc[:100, -1:]
 
-x_test = test_data.iloc[120:, 1:-1]
-y_test = test_data.iloc[120:, -1:]
+x_test = test_data.iloc[50:, 1:-1]
+y_test = test_data.iloc[50:, -1:]
 # a
 min_value = train_data[c1].min()
 max_value = train_data[c1].max()
@@ -55,9 +55,9 @@ x_test['petal_width'] = (x_test['petal_width'] - min_value)/(max_value - min_val
 # Build the model
 
 model = Sequential()
-
-model.add(Dense(10, input_shape=(4,), activation='relu', name='fc1'))
-model.add(Dense(10, activation='relu', name='fc2'))
+# 10 pierwszych neuronow. (4,0) to jest jaki input,
+model.add(Dense(4, input_shape=(4,), activation='relu', name='fc1'))
+model.add(Dense(4, activation='relu', name='fc2'))
 model.add(Dense(3, activation='softmax', name='output'))
 
 # Adam optimizer with learning rate of 0.001
@@ -71,3 +71,8 @@ print(model.summary())
 y_train = np_utils.to_categorical(y_train, num_classes=3)
 y_test = np_utils.to_categorical(y_test, num_classes=3)
 model.fit(x_train, y_train, verbose=2, batch_size=5, epochs=200)
+
+test_loss, test_acc = model.evaluate(x_train, y_train)
+print(test_acc)
+test_loss2, test_acc2 = model.evaluate(x_test, y_test)
+print(test_acc2)

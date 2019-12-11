@@ -76,8 +76,8 @@ x_test['age'] = (x_test['age'] - min_value)/(max_value - min_value)
 
 model = Sequential()
 
-model.add(Dense(10, input_shape=(8,), activation='relu', name='fc1'))
-model.add(Dense(10, activation='relu', name='fc2'))
+model.add(Dense(8, input_shape=(8,), activation='relu', name='fc1'))
+model.add(Dense(8, activation='relu', name='fc2'))
 model.add(Dense(2, activation='softmax', name='output'))
 
 # Adam optimizer with learning rate of 0.001
@@ -91,3 +91,8 @@ print(model.summary())
 y_train = np_utils.to_categorical(y_train, num_classes=2)
 y_test = np_utils.to_categorical(y_test, num_classes=2)
 model.fit(x_train, y_train, verbose=2, batch_size=5, epochs=200)
+
+test_loss, test_acc = model.evaluate(x_train, y_train)
+print(test_acc)
+test_loss2, test_acc2 = model.evaluate(x_test, y_test)
+print(test_acc2)
