@@ -1,0 +1,14 @@
+1. Dodaj start do open list
+
+2. Powtarzaj az nie bedzie konca:
+	A) Znajdz w open list kwadrat o najnizszym koszcie. Nazywamy go current square.
+	B) Wrzuc go do closed list.
+	C) Dla kazdego z 4 sasiednich kwadratow robimy:
+		- jesli to sciana to ingnorujemy
+		- jesli nie jest on w open list to go tam dodajemy. obecny kwadrat jest rodzicem nowododanego. Obliczamy wielkosci F, G, H dla tego kwadratu
+		- jesli juz jest w open list to sprawdzamy czy posiada on lepsza sciezke(im mniejsze G tym lepsza sciezka) jesli taka posiada to zamieniamy rodzicow. (UWAGA: upewnij sie ze open list nie jest sortowana przez F)
+	D) zatrzymaj sie jesli:
+		- dodales kwadrat koncowy do closed list (czyli znalazles wyjscie)
+		- nie znalazles kwadratu koncowego (w takim wypadku nie istnieje sciezka)
+3. Zapisz sciezke
+
