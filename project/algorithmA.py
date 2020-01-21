@@ -40,13 +40,13 @@ def astar(maze, start, end):
         current_index = 0
         for index, item in enumerate(open_list):
             if item.f < current_node.f:
-                print(current_node.position)
                 current_node = item
                 current_index = index
 
         # Usun obecne miejsce z open list i dodanie go do closed_list
         open_list.pop(current_index)
-        closed_list.append(current_node)
+        if current_node not in closed_list:
+            closed_list.append(current_node)
 
         # Znalezienie konca labiryntu
         if current_node == end_node:
@@ -55,8 +55,9 @@ def astar(maze, start, end):
             while current is not None:
                 path.append(current.position)
                 current = current.parent
-            print(pathway)
-            return path[::-1]  # Trzeba odwrocic sciezke
+            for node in closed_list:
+                pathway.append(node.position)
+            return path[::-1], pathway  # Trzeba odwrocic sciezke
 
         # Szukanie po sasiednich miejscach
         children = []
@@ -102,6 +103,13 @@ def astar(maze, start, end):
             open_list.append(child)
 
 
+def givePath(maze, start, end):
+    temp_start = (start[0], start[1])
+    temp_end = (end[0], end[1])
+    path = astar(maze, temp_start, temp_end)
+    return path
+
+
 def main():
     maze = [(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), (0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 0),
             (0, 0, 0, 1, 1, 1, 0, 1, 0, 0, 1, 0),
@@ -116,7 +124,8 @@ def main():
     end = (10, 10)
 
     path = astar(maze, start, end)
-    print(path)
+    for p in path:
+        print(p)
 
 
 if __name__ == '__main__':
